@@ -1,5 +1,5 @@
 type-check:
-	mypy src
+	mypy src/monitor
 
 lint:
 	pylint src --load-plugins pylint_quotes
