@@ -1,0 +1,27 @@
+name: CI checks
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  ci_checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        command: [lint, style-check, type-check]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Upgrade PIP
+        run: python -m pip install --upgrade pip
+      - name: Install dependencies
+        run: pip install -e .[dev]
+      - name: Run ${{ matrix.command }}
+        run: make ${{ matrix.command }}
