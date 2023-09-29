@@ -1,0 +1,10 @@
+websites:
+  - url: "https://duckduckgo.com/"
+    period: 10
+
+  - url: "https://stackoverflow.co/"
+    period: 300
+    regexp: "Empowering the world"
+
+  - url: "https://google.com/"
+    period: 100
