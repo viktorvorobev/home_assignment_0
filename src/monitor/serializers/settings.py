@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List
 
 import pydantic
 
@@ -6,7 +6,7 @@ import pydantic
 class WebsiteSetting(pydantic.BaseModel):
     url: pydantic.AnyUrl
     period: float = pydantic.Field(ge=5, le=300)
-    regexp: Optional[str] = ''
+    regexp: str = ''
 
 
 class MonitorSettings(pydantic.BaseModel):
