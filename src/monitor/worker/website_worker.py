@@ -33,6 +33,7 @@ class WebsiteWorker(Worker):
         response_time = time.time() - start_time
         regexp_match = await self._parse_by_regexp(text)
         return MonitoringResult(
+            url=self._url,
             timestamp=timestamp,
             status_code=status_code,
             response_time=response_time,

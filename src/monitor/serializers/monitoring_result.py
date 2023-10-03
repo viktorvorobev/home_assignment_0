@@ -4,6 +4,7 @@ import pydantic
 
 
 class MonitoringResult(pydantic.BaseModel):
+    url: str
     timestamp: datetime
     status_code: int
     response_time: float
