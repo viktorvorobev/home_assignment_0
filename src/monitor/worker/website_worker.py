@@ -27,7 +27,7 @@ class WebsiteWorker(Worker):
             logger.error('Queue overflow! %s: %s', error.__class__.__name__, error)
 
     async def _check_website_status(self) -> MonitoringResult:
-        timestamp = datetime.datetime.now().isoformat()
+        timestamp = datetime.datetime.now()
         start_time = time.time()
         status_code, text = await self._get_url_status()
         response_time = time.time() - start_time
