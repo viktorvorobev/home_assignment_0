@@ -1,3 +1,7 @@
+db:
+  period: 5
+  max_batch_size: 100
+
 websites:
   - url: "https://duckduckgo.com/"
     period: 10
