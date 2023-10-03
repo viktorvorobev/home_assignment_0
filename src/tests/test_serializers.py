@@ -9,6 +9,10 @@ from monitor.serializers.settings import MonitorSettings, WebsiteSetting
 
 def test_valid_yaml():
     test_data = {
+        'db': {
+            'period': 10,
+            'max_batch_size': 100,
+        },
         'websites': [
             {
                 'url': 'https://foo.com/',
