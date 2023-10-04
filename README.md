@@ -13,3 +13,42 @@ The solution should **NOT** include using any of the following:
 - **Database ORM libraries** - use a Python DB API or similar library and raw SQL queries instead.
 - **External Scheduling libraries** - we really want to see your take on concurrency.
 - Extensive container build recipes - rather focus your effort on the Python code, tests, documentation, etc.
+
+## Installation
+
+1. Clone the repo
+2. Create a virtual environment of a choice, e.g. with `venv`:  
+   `python3.11 -m venv .venv`
+3. Activate the virtual environment, e.g. for `venv` and linux:
+   `source .venv/bin/activate`
+4. Install the package:
+   `pip install .`
+
+## Local launch
+
+To test with the local PostgreSQL, the attached docker-file can be used as follows:
+
+```bash
+docker compose --env-file .test.env up
+```
+
+Then to use it:
+
+```bash
+monitor --settings example_settings.yaml --envfile .test.env --verbose
+```
+
+Thanks to `argparse`, there is a help as well:
+
+```
+monitor --help                                                        
+usage: monitor [-h] --settings SETTINGS [--verbose] [--envfile ENVFILE]
+
+Util to monitor and log state of websites
+
+options:
+  -h, --help           show this help message and exit
+  --settings SETTINGS  Path to settings.yaml file
+  --verbose            Set logging level to DEBUG
+  --envfile ENVFILE    Path to environment file with credentials of postgres
+```
