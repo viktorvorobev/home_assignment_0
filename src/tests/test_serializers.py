@@ -4,7 +4,7 @@ import pydantic
 import pytest
 import yaml
 
-from monitor.serializers.settings import MonitorSettings, WebsiteSetting
+from monitor.serializers.settings import MonitorSettings, WebsiteSetting, DbConnectionSettings
 
 
 def test_valid_yaml():
@@ -59,3 +59,20 @@ def test_invalid_period(invalid_period: float):
     }
     with pytest.raises(pydantic.ValidationError):
         _ = WebsiteSetting(**data)
+
+
+@pytest.mark.parametrize('ssl_required', (True, False), ids=('ssl_required', 'ssl_not_required'))
+def test_db_connection_serializer(ssl_required: bool):
+    host = 'localhost'
+    port = '5432'
+    db_name = 'defaultdb'
+    username = 'username'
+    password = 'password'
+
+    data = {'host': host, 'port': port, 'db': db_name, 'username': username, 'password': password, 'ssl': ssl_required}
+    expected_dsn = f'postgres://{username}:{password}@{host}:{port}/{db_name}'
+    if ssl_required:
+        expected_dsn += '?sslmode=require'
+
+    serialized_data = DbConnectionSettings(**data)
+    assert serialized_data.dsn == expected_dsn
