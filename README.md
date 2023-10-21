@@ -1,3 +1,7 @@
+[![CI checks](https://github.com/viktorvorobev/home_assignment_0/actions/workflows/ci-checks.yaml/badge.svg?branch=main)](https://github.com/viktorvorobev/home_assignment_0/actions/workflows/ci-checks.yaml)
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mr-viktor-vorobev/)
+[![](https://img.shields.io/badge/My%20CV-00A98F?logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1e45Z14JU7wt4H0zuaQfNd0Xz4Yu0q1h-/view?usp=share_link)
+
 # Exercise
 
 Your task is to implement a program that monitors the availability of many websites over the network, produces metrics
